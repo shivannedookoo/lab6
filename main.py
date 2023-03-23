@@ -8,7 +8,12 @@ def encode(password):  # shifts each digit of an 8-digit password by 3 numbers
     return encoded_password
 
 
-
+def decode(encoded_password):
+    decoded_password = ""
+    for digit in encoded_password:
+        decoded = str((int(digit) - 3) % 10)  # shifts each digit down by 3 and keeps remainder for values more than 10
+        decoded_password += decoded
+    return decoded_password
 
 
 if __name__ == "__main__":
@@ -26,7 +31,7 @@ if __name__ == "__main__":
             encode = encode(password)
             print("Your password has been encoded and stored!\n")
         if option == 2:
-            pass
+            print(f"The encoded password is {encode}, and the original password is {decode(encode)}.\n" )
         if option == 3:  # quits
             break
 
