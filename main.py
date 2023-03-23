@@ -3,7 +3,10 @@
 def encode(password):  # shifts each digit of an 8-digit password by 3 numbers
     encoded_password = ""
     for digit in password:
-        encoded = str((int(digit) + 3) % 10)  # shifts each digit up by 3 and keeps remainder for values more than 10
+        if (int(digit) + 3) >= 10:
+            encoded = str((int(digit) + 3) % 10) # shifts each digit up by 3 and keeps remainder for values more than 10
+        else:
+            encoded = str((int(digit) + 3)) # ensures we are not taking the remainder of values less then 10
         encoded_password += encoded
     return encoded_password
 
